@@ -5,15 +5,22 @@ import { AppService } from './app.service';
 import { PostModule } from './post/post.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
+// const mocks = {
+//   Int: () => 6,
+//   Float: () => 22.1,
+//   String: () => 'Hello',
+// };
 @Module({
   imports: [    
     GraphQLModule.forRoot<ApolloDriverConfig>({     
       driver: ApolloDriver,
-      debug: false,
+      debug: true,
       playground: true,
       typePaths: ['./**/*.graphql'],
+      mocks:true,
     }),
     PostModule,
+    
   
   ],
   controllers: [AppController],
